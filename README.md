@@ -31,8 +31,8 @@ There are four datasets used in the experiments:
 - [SSB](https://github.com/eyalroz/ssb-dbgen)
 
 You can download or generate these datasets from their respective sources online. Below are the steps to prepare your data:
-- For World, we have provided the SQL files (`world.sql` and `movies.sql`) for the World and MovieLens 1M datasets. You can directly import them into your MySQL server.
-- For the other datasets (TPC-H and SSB), follow the instructions on their respective websites to generate the datasets.
+- For World, we have provided the SQL file (`world.sql`) for the World dataset. You can directly import them into your MySQL server.
+- For the other datasets (MovieLens 1M, TPC-H and SSB), follow the instructions on their respective websites to generate the datasets.
 
 **Importing Datasets into MySQL**:
 
