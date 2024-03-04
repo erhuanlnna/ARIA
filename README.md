@@ -27,8 +27,8 @@ Make sure Python, MySQL, and other libraries are properly installed and configur
 There are four datasets used in the experiments:
 - World
 - MovieLens 1 M
-- TPC-H
-- SSB
+- [TPC-H](https://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp)
+- [SSB](https://github.com/eyalroz/ssb-dbgen)
 
 You can download or generate these datasets from their respective sources online. Below are the steps to prepare your data:
 - For World, we have provided a SQL file (`world.sql`). You can directly import this into your MySQL server.
@@ -41,6 +41,7 @@ After preparing your datasets, import them into your MySQL server. Use the MySQL
 mysql -u username -p database_name < path/to/movie.sql
 ```
 Replace username, database_name, and path/to/movie.sql with your MySQL username, the name of the database where you want to import the data, and the path to the SQL file, respectively.
+Note that, the name of data file in the sql file should correspond to you own path.
 
 3. **Run the Experiments**
 To run the experiments:
