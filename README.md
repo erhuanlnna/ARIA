@@ -25,14 +25,14 @@ Make sure Python, MySQL, and other libraries are properly installed and configur
 **Downloading/Generating Datasets**:
 
 There are four datasets used in the experiments:
-- World
-- MovieLens 1 M
+- [World](https://dev.mysql.com/doc/world-setup/en/)
+- [MovieLens 1 M](https://grouplens.org/datasets/movielens/1m/)
 - [TPC-H](https://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp)
 - [SSB](https://github.com/eyalroz/ssb-dbgen)
 
 You can download or generate these datasets from their respective sources online. Below are the steps to prepare your data:
-- For World, we have provided a SQL file (`world.sql`). You can directly import this into your MySQL server.
-- For the other datasets (MovieLens 1M, TPC-H, SSB), follow the instructions on their respective websites to download or generate the datasets.
+- For World, we have provided the SQL files (`world.sql` and `movies.sql`) for the World and MovieLens 1M datasets. You can directly import them into your MySQL server.
+- For the other datasets (TPC-H and SSB), follow the instructions on their respective websites to generate the datasets.
 
 **Importing Datasets into MySQL**:
 
@@ -41,7 +41,7 @@ After preparing your datasets, import them into your MySQL server. Use the MySQL
 mysql -u username -p database_name < path/to/movie.sql
 ```
 Replace username, database_name, and path/to/movie.sql with your MySQL username, the name of the database where you want to import the data, and the path to the SQL file, respectively.
-Note that, the name of data file in the sql file should correspond to you own path.
+Note that, the name of data file in the sql file should correspond to your own path.
 
 3. **Run the Experiments**
 To run the experiments:
@@ -59,7 +59,28 @@ This will run the default experiments and output the prices of queries over Worl
 
 ## Varying the Support Size
 
+For the World and MovieLens 1M datasets, you can directly run the `exp-size.py` to observe the corresponding experimental results.
+For the TPC-H and SSB datasets, follow these steps to generate the support sets with different sizes and then run `exp-size.py`.
+1. Specify the domain constraints of attributes in the database.
+In the file `generate_support_set.py`, specify the domain constraint of each attribute.
+Here is an example:
+```python
+111
+```
+2. Run the file `generate_support_set.py`
+
+   and the support sets are stored in the files.
+
+3. Load these generated support sets into MySQL with following codes.
+```MySQL
+
+```
+
 ## Varying the Scale Factor
+
+1. For TPC-H and SSB datasets, generate the datasets with different scale factors. (Do the same works in **Data Preparation**)
+2. Run the `exp-sf.py`
+
 
 ## Pricing Queries with Different Selectivities
 
