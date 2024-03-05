@@ -32,7 +32,7 @@ There are four datasets used in the experiments:
 
 You can download or generate these datasets from their respective sources online. Below are the steps to prepare your data:
 - For World, we have provided the SQL file (`world.sql`) for the World dataset. You can directly import them into your MySQL server.
-- For the other datasets (MovieLens 1M, TPC-H and SSB), follow the instructions on their respective websites to generate the datasets.
+- For the other datasets (MovieLens 1M, TPC-H, and SSB), follow the instructions on their respective websites to generate the datasets.
 
 **Importing Datasets into MySQL**:
 
@@ -85,7 +85,7 @@ LOAD DATA LOCAL INFILE '/path/to/movie/movies_users_ar_support_all.tbl' INTO TAB
 ```python
 python exp-size.py
 ```
-If you want to run the experiments on Movielens/TPC-H/SSB datasets, change the variable `db` and `sql_list` as the corresponding database and the priced queries.
+If you want to run the experiments on Movielens/TPC-H/SSB datasets, change the variables `db` and `sql_list` as the corresponding database and the priced queries.
 The `domain_list` variable should be specified as that on the corresponding database and the `create_db` should be set as True to automatically create different sizes of support sets in the database.
 ## Varying the Scale Factor
 
