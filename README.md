@@ -89,15 +89,16 @@ If you want to run the experiments on Movielens/TPC-H/SSB datasets, change the v
 The `domain_list` variable should be specified as that on the corresponding database and the `create_db` should be set as True to automatically create different sizes of support sets in the database.
 ## Varying the Scale Factor
 
-1. For TPC-H and SSB datasets, generate the datasets with different scale factors. (Do the same works in **Data Preparation**)
+1. For TPC-H and SSB datasets, generate the datasets with different scale factors. (Do the same work in **Data Preparation**)
 2. Run the `exp-sf.py`
-
+Note that, one can use the `Utils.py` to replace `dbUtils.py` on these two datasets.
+This is because, the `mysql.connector` library is faster than `pymysql` library in communicating with MySQL, especially when the query results are large.
 
 ## Pricing Queries with Different Selectivities
-
+Run `exp-selection-world.py` for World dataset and `exp-selection-movies` for MovieLens 1M dataset.
 ## Pricing Limit Queries with Different Limit Numbers
-
+Run `exp-limit-world.py` for World dataset and `exp-limit-movies` for MovieLens 1M dataset.
 ## Pricing Distinct Queries
-
+Run `exp-distinct-world.py` for World dataset and `exp-distinct-movies` for MovieLens 1M dataset.
 ## Pricing Aggregate Queries
-
+Run `exp-agg-world.py` for World dataset and `exp-agg-movies` for MovieLens 1M dataset.
