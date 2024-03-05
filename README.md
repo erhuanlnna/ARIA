@@ -36,9 +36,9 @@ You can download or generate these datasets from their respective sources online
 
 **Importing Datasets into MySQL**:
 
-After preparing your datasets, import them into your MySQL server. Use the MySQL command line to execute the SQL files corresponding to each dataset. For example, to import the MovieLens 1M dataset, you might use a command like the following:
+After preparing your datasets, import them into your MySQL server. Use the MySQL command line to execute the SQL files corresponding to each dataset. For example, to import the World dataset, you might use a command like the following:
 ```
-mysql -u username -p database_name < path/to/movie.sql
+mysql -u username -p database_name < path/to/world.sql
 ```
 Replace username, database_name, and path/to/movie.sql with your MySQL username, the name of the database where you want to import the data, and the path to the SQL file, respectively.
 Note that, the name of data file in the sql file should correspond to your own path.
@@ -61,21 +61,32 @@ This will run the default experiments and output the prices of queries over Worl
 
 For the World and MovieLens 1M datasets, you can directly run the `exp-size.py` to observe the corresponding experimental results.
 For the TPC-H and SSB datasets, follow these steps to generate the support sets with different sizes and then run `exp-size.py`.
-1. Specify the domain constraints of attributes in the database.
-In the file `generate_support_set.py`, specify the domain constraint of each attribute.
-Here is an example:
+1. Run the file `generate_support_set.py` to generate the support sets on the database.
 ```python
-111
+python generate_support_set.py -d database_name
 ```
-2. Run the file `generate_support_set.py`
 
-   and the support sets are stored in the files.
-
-3. Load these generated support sets into MySQL with following codes.
+2. Import these generated support sets into MySQL with the following codes.
 ```MySQL
-
+-- Create each table xxxx_ar_support_all for each table xxx in the database.
+-- For example, in the database Movies, you have to execute these codes.
+create table users_ar_support_all like USERS;
+alter table users_ar_support_all add column aID INT NOT NULL;
+create table ratings_ar_support_all like RATINGS;
+alter table ratings_ar_support_all add column aID INT NOT NULL;
+create table movies_ar_support_all like MOVIES;
+alter table movies_ar_support_all add column aID INT NOT NULL;
+--- Import the generated data into the database
+LOAD DATA LOCAL INFILE '/path/to/movies_movies_ar_support_all.tbl' INTO TABLE movies_ar_support_all   FIELDS TERMINATED BY ';';
+LOAD DATA LOCAL INFILE '/path/to/movies_ratings_ar_support_all.tbl' INTO TABLE ratings_ar_support_all   FIELDS TERMINATED BY ';';
+LOAD DATA LOCAL INFILE '/path/to/movie/movies_users_ar_support_all.tbl' INTO TABLE users_ar_support_all   FIELDS TERMINATED BY ';';
 ```
-
+3. Run the `exp-size.py`.
+```python
+python exp-size.py
+```
+If you want to run the experiments on Movielens/TPC-H/SSB datasets, change the variable `db` and `sql_list` as the corresponding database and the priced queries.
+The `domain_list` variable should be specified as that on the corresponding database and the `create_db` should be set as True to automatically create different sizes of support sets in the database.
 ## Varying the Scale Factor
 
 1. For TPC-H and SSB datasets, generate the datasets with different scale factors. (Do the same works in **Data Preparation**)
