@@ -8,7 +8,7 @@ This README provides instructions on how to set up and run the default experimen
 
    Before running any experiments, ensure your environment is correctly set up. This project requires:
 - Python: 3.7
-- MySQL Server (5.7 or newer)
+- MySQL Server (8.0 or newer)
 - Necessary libraries:
   - mysql
   - mysql-connector-python
