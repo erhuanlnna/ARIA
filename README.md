@@ -31,17 +31,17 @@ There are four datasets used in the experiments:
 - [SSB](https://github.com/eyalroz/ssb-dbgen)
 
 You can download or generate these datasets from their respective sources online. Below are the steps to prepare your data:
-- For World, we have provided the SQL file (`world.sql`) for the World dataset. You can directly import them into your MySQL server.
+- For World, we have provided the SQL file (`world.sql`) for the World dataset. You can directly import them into your MySQL server by executing `mysql -u username -p database_name < path/to/world.sql`.
 - For the other datasets (MovieLens 1M, TPC-H, and SSB), follow the instructions on their respective websites to generate the datasets.
 
 **Importing Datasets into MySQL**:
 
-After preparing your datasets, import them into your MySQL server. Use the MySQL command line to execute the SQL files corresponding to each dataset. For example, to import the World dataset, you might use a command like the following:
+After preparing your datasets, import them into your MySQL server. Use the MySQL command line to execute the SQL files corresponding to each dataset. For example, to import the MovieLens 1M dataset, you might use a command like the following:
 ```
-mysql -u username -p database_name < path/to/world.sql
+mysql -u username -p database_name < path/to/movie.sql
 ```
 Replace username, database_name, and path/to/movie.sql with your MySQL username, the name of the database where you want to import the data, and the path to the SQL file, respectively.
-Note that, the name of data file in the sql file should correspond to your own path.
+Note that, the name of the data file in the SQL file should correspond to your own path.
 
 3. **Run the Experiments**
 To run the experiments:
