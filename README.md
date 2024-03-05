@@ -47,11 +47,13 @@ Note that, the name of the data file in the SQL file should correspond to your o
 
 To run the experiments:
 
+- Create `rs` folder to store the results.
 - Open the main.py file.
 - Specify the database name and the SQL list containing all SQL queries for the experiments.
 - Execute `main.py` to start the experiments and observe the performance of our pricing framework, ARIA.
 Example command to run the experiments:
 ```bash
+mkdir rs
 python main.py
 ```
 This will run the default experiments and output the prices of queries over World dataset based on the pricing framework ARIA.
