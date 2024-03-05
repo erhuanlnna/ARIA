@@ -44,6 +44,7 @@ Replace username, database_name, and path/to/movie.sql with your MySQL username,
 Note that, the name of the data file in the SQL file should correspond to your own path.
 
 3. **Run the Experiments**
+
 To run the experiments:
 
 - Open the main.py file.
@@ -61,14 +62,17 @@ This will run the default experiments and output the prices of queries over Worl
 
 For the World and MovieLens 1M datasets, you can directly run the `exp-size.py` to observe the corresponding experimental results.
 For the TPC-H and SSB datasets, follow these steps to generate the support sets with different sizes and then run `exp-size.py`.
+
 1. Run the file `generate_support_set.py` to generate the support sets on the database.
+
 ```python
 python generate_support_set.py -d database_name
 ```
 
 2. Import these generated support sets into MySQL with the following codes.
+
 ```MySQL
--- Create each table xxxx_ar_support_all for each table xxx in the database.
+-- Create each table xxxx_ar_support_all for each table xxx (UPPER CASE) in the database.
 -- For example, in the database Movies, you have to execute these codes.
 create table users_ar_support_all like USERS;
 alter table users_ar_support_all add column aID INT NOT NULL;
@@ -82,6 +86,7 @@ LOAD DATA LOCAL INFILE '/path/to/movies_ratings_ar_support_all.tbl' INTO TABLE r
 LOAD DATA LOCAL INFILE '/path/to/movie/movies_users_ar_support_all.tbl' INTO TABLE users_ar_support_all   FIELDS TERMINATED BY ';';
 ```
 3. Run the `exp-size.py`.
+
 ```python
 python exp-size.py
 ```
